@@ -1,7 +1,7 @@
 # 📈 Stock Valuation Class
 
 This project provides a simple **stock valuation tool** using the [Financial Modeling Prep API](https://site.financialmodelingprep.com/developer/docs).  
-It calculates the **Margin of Safety (MoS)** for a given stock based on free cash flow, return on equity, reinvestment rate, and a discounted cash flow (DCF) approach.  
+It calculates the **Intrinsic Ratio** for a given stock based on free cash flow, return on equity, reinvestment rate, and a discounted cash flow (DCF) approach.  
 
 ---
 
@@ -11,23 +11,26 @@ It calculates the **Margin of Safety (MoS)** for a given stock based on free cas
 - Estimates **Return on Equity (ROE)** and **Reinvestment Rate**  
 - Caps growth assumptions to a conservative **5% max**  
 - Calculates a **Discounted Cash Flow valuation**  
-- Returns the **Margin of Safety** relative to current market cap  
+- Returns the **Intrinsic ratio** which is the DCF market value relative to current market cap  
 - Run directly from the **command line**  
 
 ---
 
 ## 📂 Project Structure
-.
-├── stock_valuation.py   # Main class + CLI entry point
-├── .env                 # Store your FMP API key here
-└── README.md
+
+| File | Description |
+|----------|-------------|
+| `stock_valuation.py` | # Main class + CLI entry point
+| `.env` | # Store your FMP API key here
+| `README.md` | 
+
 
 ---
 
 ## ⚙️ Installation
 
 1. Clone the repo  
-   git clone https://github.com/sergiobk201/stock-valuation.git  
+   git clone [https://github.com/sergiobk201/stock-valuation.git  ](https://github.com/sergiobk201/fast_company_valuator)
    cd stock-valuation  
 
 2. Install dependencies  
