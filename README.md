@@ -1,6 +1,6 @@
 # 📈 Stock Valuation Class
 
-This project provides a simple **stock valuation tool** using the [Financial Modeling Prep API](https://site.financialmodelingprep.com/developer/docs/).  
+This project provides a simple **stock valuation tool** using the [Financial Modeling Prep API](https://site.financialmodelingprep.com/developer/docs).  
 It calculates the **Margin of Safety (MoS)** for a given stock based on free cash flow, return on equity, reinvestment rate, and a discounted cash flow (DCF) approach.  
 
 ---
@@ -27,7 +27,7 @@ It calculates the **Margin of Safety (MoS)** for a given stock based on free cas
 ## ⚙️ Installation
 
 1. Clone the repo  
-   git clone https://github.com/yourusername/stock-valuation.git  
+   git clone https://github.com/sergiobk201/stock-valuation.git  
    cd stock-valuation  
 
 2. Install dependencies  
@@ -37,7 +37,7 @@ It calculates the **Margin of Safety (MoS)** for a given stock based on free cas
    Create a `.env` file in the project root:  
    FMP_API_KEY=your_api_key_here  
 
-You can get a free API key from [Financial Modeling Prep](https://site.financialmodelingprep.com/developer/docs/).
+You can get a free API key from [Financial Modeling Prep API](https://site.financialmodelingprep.com/developer/docs)
 
 ---
 
@@ -79,7 +79,3 @@ print("Margin of Safety:", mos)
 
 ---
 
-## ✅ Next Steps
-- Add holiday/business day adjustments for valuation dates  
-- Support quarterly data  
-- Extend to multiple valuation methods (e.g., Graham, multiples, etc.)  
