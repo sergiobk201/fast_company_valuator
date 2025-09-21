@@ -61,6 +61,8 @@ class StockValuation:
         else:
             real_growth = growth
 
+        cost_e = self.cost
+
         dcf = (today_fcf * (1+real_growth)) + ((today_fcf * ((1+real_growth)**2))/(cost_e - real_growth))
 
         today = date.today()
