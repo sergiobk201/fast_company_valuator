@@ -52,15 +52,14 @@ class StockValuation:
         reinv_rate_avg = np.average(reinv_rate['reinv_rate'])
         
         growth = avg_roe * reinv_rate_avg
+
         real_growth = 0
         if growth > 0.05:
             real_growth = 0.05
+        elif growth < 0:
+            real_growth = 0    
         else:
-            pass
-
-        cost_e = self.cost
-
-        real_growth
+            real_growth = growth
 
         dcf = (today_fcf * (1+real_growth)) + ((today_fcf * ((1+real_growth)**2))/(cost_e - real_growth))
 
