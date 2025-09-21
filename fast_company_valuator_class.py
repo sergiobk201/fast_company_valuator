@@ -35,10 +35,9 @@ class StockValuation:
 
         cf_cfo = cf['operating_cash_flow']
         cf_capex = cf['capital_expenditure']
-        cf_debt_taken = cf['sales_maturities_of_investments']
-        cf_debt_repaid = cf['debt_repayment']
+        cf_net_debt = cf['debt_repayment']
         
-        fcf = cf_cfo + cf_capex + cf_debt_taken + cf_debt_repaid
+        fcf = cf_cfo + cf_capex + cf_net_debt
         fcf_df = pd.DataFrame(fcf)
         fcf_df.columns = ['free_cash_flow']
         today_fcf = np.average(fcf_df['free_cash_flow'])
