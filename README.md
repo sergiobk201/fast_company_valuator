@@ -11,7 +11,7 @@ It calculates the **Intrinsic Ratio** for a given stock based on free cash flow,
 - Estimates **Return on Equity (ROE)** and **Reinvestment Rate**  
 - Caps growth assumptions to a conservative **5% max**  
 - Calculates a **Discounted Cash Flow valuation**  
-- Returns the **Intrinsic ratio** which is the DCF market value relative to current market cap  
+- Returns the **Intrinsic Ratio** which is the DCF market value relative to current market cap  
 - Run directly from the **command line**  
 
 ---
@@ -20,9 +20,11 @@ It calculates the **Intrinsic Ratio** for a given stock based on free cash flow,
 
 | File | Description |
 |----------|-------------|
-| `stock_valuation.py` | # Main class + CLI entry point
+| `fast_company_valuator_class.py` | # Main class + CLI entry point
+| `fast_company_valuator.ipynb` | # Step by step thought process
 | `.env` | # Store your FMP API key here
-| `README.md` | 
+| `.gitignore` | # Add .env to avoid sharing API key
+| `README.md` |
 
 
 ---
@@ -46,9 +48,10 @@ You can get a free API key from [Financial Modeling Prep API](https://site.finan
 
 ## 🖥️ Usage
 
-Run from terminal:  
+Run from terminal:
+`bash
 python stock_valuation.py AAPL 0.1  
-
+`
 - `AAPL` → Stock ticker  
 - `0.1` → Cost of equity (10%)  
 
@@ -61,12 +64,13 @@ A Margin of Safety < 1 means it may be overvalued.
 ---
 
 Use in Python:  
+`python
 from stock_valuation import StockValuation  
 
 sv = StockValuation("MSFT", 0.08)  # 8% cost of equity  
 mos = sv.get_mos()  
 print("Margin of Safety:", mos)  
-
+`
 ---
 
 ## 📊 Formula Highlights
