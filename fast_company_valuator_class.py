@@ -14,7 +14,7 @@ class StockValuation:
         self.ticker = ticker
         self.cost = cost
 
-    def get_mos(self):
+    def get_ir(self):
 
         bs = fmp_get(
         resource="balance-sheet-statement", 
@@ -83,5 +83,5 @@ if __name__ == "__main__":
     cost = float(sys.argv[2])
     
     sv = StockValuation(ticker, cost)
-    print("Intrinsic Ratio:", sv.get_mos())
+    print("Intrinsic Ratio:", sv.get_ir())
 

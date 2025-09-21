@@ -70,14 +70,14 @@ Use in Python:
 from fast_company_valuator_class import StockValuation  
 
 sv = StockValuation("MSFT", 0.08)  # 8% cost of equity  
-mos = sv.get_mos()  
-print("Margin of Safety:", mos)  
+ir = sv.get_ir()  
+print("Intrinsic Ratio:", ir)  
 ```
 ---
 
 ## 📊 Formula Highlights
 - Free Cash Flow (FCF):  
-  FCF = Operating Cash Flow + CapEx + Debt Taken - Debt Repaid  
+  FCF = Operating Cash Flow + CapEx + Debt Taken - Debt Paid 
 
 - Growth Rate:  
   Growth = avg(ROE) * avg(Reinvestment Rate)  
