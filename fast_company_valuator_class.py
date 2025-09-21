@@ -73,16 +73,16 @@ class StockValuation:
             params= {'date': f'{today.year}-{today.month}-{today.day}'},
             to_pandas=True
         )
-        mos = dcf / market_cap['market_cap']
+        ir = dcf / market_cap['market_cap']
         
-        return float(mos.iloc[0])
+        return float(ir.iloc[0])
     
 if __name__ == "__main__":
     import sys
-    # Example: python stock_valuation.py 100 5 0.1
+    # Example: python fast_company_valuator_class.py 100 5 0.1
     ticker = str(sys.argv[1])
     cost = float(sys.argv[2])
     
     sv = StockValuation(ticker, cost)
-    print("Margin of Safety:", sv.get_mos())
+    print("Intrinsic Ratio:", sv.get_mos())
 
