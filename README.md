@@ -33,8 +33,8 @@ It calculates the **Intrinsic Ratio** for a given stock based on free cash flow,
 
 1. Clone the repo
    ```bash  
-   git clone [https://github.com/sergiobk201/stock-valuation.git  ](https://github.com/sergiobk201/fast_company_valuator)
-   cd stock-valuation  
+   git clone https://github.com/sergiobk201/fast_company_valuator.git
+   cd stock-valuation
    ```
 2. Install dependencies  
    ```bash
