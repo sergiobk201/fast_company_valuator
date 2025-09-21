@@ -52,7 +52,7 @@ You can get a free API key from [Financial Modeling Prep API](https://site.finan
 
 Run from terminal:
 ```bash
-python stock_valuation.py AAPL 0.1  
+python fast_company_valuator_class.py AAPL 0.1  
 ```
 - `AAPL` → Stock ticker  
 - `0.1` → Cost of equity (10%)  
@@ -67,7 +67,7 @@ An Intrinsic Ratio < 1 means it may be overvalued.
 
 Use in Python:  
 ```python
-from stock_valuation import StockValuation  
+from fast_company_valuator_class import StockValuation  
 
 sv = StockValuation("MSFT", 0.08)  # 8% cost of equity  
 mos = sv.get_mos()  
