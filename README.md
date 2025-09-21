@@ -31,14 +31,16 @@ It calculates the **Intrinsic Ratio** for a given stock based on free cash flow,
 
 ## ⚙️ Installation
 
-1. Clone the repo  
+1. Clone the repo
+   ```bash  
    git clone [https://github.com/sergiobk201/stock-valuation.git  ](https://github.com/sergiobk201/fast_company_valuator)
    cd stock-valuation  
-
+   ```
 2. Install dependencies  
+   ```bash
    pip install pandas numpy python-dotenv pyarrow fmpapi  
-
-3. Set up environment variables  
+   ```
+4. Set up environment variables  
    Create a `.env` file in the project root:  
    FMP_API_KEY=your_api_key_here  
 
@@ -49,28 +51,28 @@ You can get a free API key from [Financial Modeling Prep API](https://site.finan
 ## 🖥️ Usage
 
 Run from terminal:
-`bash
+```bash
 python stock_valuation.py AAPL 0.1  
-`
+```
 - `AAPL` → Stock ticker  
 - `0.1` → Cost of equity (10%)  
 
 Example output:  
-Margin of Safety: 1.18  
+Intrinsic Ratio: 1.18  
 
-A Margin of Safety > 1 means the stock may be undervalued relative to DCF.  
-A Margin of Safety < 1 means it may be overvalued.  
+An Instrinsic Ratio > 1 means the stock may be undervalued relative to DCF.  
+An Intrinsic Ratio < 1 means it may be overvalued.  
 
 ---
 
 Use in Python:  
-`python
+```python
 from stock_valuation import StockValuation  
 
 sv = StockValuation("MSFT", 0.08)  # 8% cost of equity  
 mos = sv.get_mos()  
 print("Margin of Safety:", mos)  
-`
+```
 ---
 
 ## 📊 Formula Highlights
