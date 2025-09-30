@@ -13,6 +13,7 @@ It calculates the **Intrinsic Ratio** for a given stock based on free cash flow,
 - Calculates a **Discounted Cash Flow valuation**  
 - Returns the **Intrinsic Ratio** which is the DCF market value relative to current market cap  
 - Run directly from the **command line**  
+- You can also run a **docker container** for ease of reproduction
 
 ---
 
@@ -24,12 +25,15 @@ It calculates the **Intrinsic Ratio** for a given stock based on free cash flow,
 | `fast_company_valuator.ipynb` | # Step by step thought process
 | `.env` | # Store your FMP API key here
 | `.gitignore` | # Add .env to avoid sharing API key
-| `README.md` |
+| `Dockerfile` | #Use this to create a docker image and container
+| `requirements.txt` | #All project dependencies and packages
+| `.dockerignore` | #Add files that don't need to be considered when creating container
+|| `README.md` |
 
 
 ---
 
-## ⚙️ Installation
+## ⚙️ Installation (Option 1)
 
 1. Clone the repo
    ```bash  
@@ -40,9 +44,31 @@ It calculates the **Intrinsic Ratio** for a given stock based on free cash flow,
    ```bash
    pip install pandas numpy python-dotenv pyarrow fmpapi  
    ```
-4. Set up environment variables  
+3. Set up environment variables  
    Create a `.env` file in the project root:  
    FMP_API_KEY=your_api_key_here  
+
+You can get a free API key from [Financial Modeling Prep API](https://site.financialmodelingprep.com/developer/docs)
+
+---
+
+## ⚙️ Installation (Option 2)
+
+1. Clone the repo
+   ```bash  
+   git clone https://github.com/sergiobk201/fast_company_valuator.git
+   cd fast_company_valuator
+   ```
+2. Build your docker container
+   ```bash
+   docker build -t choose_name .
+   ```
+3. Run docker container with API, stock ticker and discount rate 
+   Create a `.env` file in the project root:  
+   FMP_API_KEY=your_api_key_here
+   ```bash
+   docker run --env-file .env choose_name 'TICKER' 0.1
+   ```  
 
 You can get a free API key from [Financial Modeling Prep API](https://site.financialmodelingprep.com/developer/docs)
 
