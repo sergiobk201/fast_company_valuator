@@ -3,3 +3,5 @@ numpy
 pyarrow
 python-dotenv
 fmpapi
+requests
+json

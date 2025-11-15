@@ -1,7 +1,7 @@
 import pandas as pd 
 import numpy as np
 import os
-from fmpapi import fmp_get
+import requests
 from dotenv import load_dotenv
 import pyarrow
 from datetime import date
@@ -16,37 +16,37 @@ class StockValuation:
 
     def get_ir(self):
 
-        bs = fmp_get(
-        resource="balance-sheet-statement", 
-        symbol=self.ticker, 
-        params={"period": "annual", "limit": 5},
-        to_pandas=True
-        )
+        bs_response = requests.get(
+            f'https://financialmodelingprep.com/stable/balance-sheet-statement?symbol={self.ticker}&apikey={api_key}'
 
+            )
+
+        bs_json = bs_response.json()
+        bs = pd.DataFrame(bs_json)
         self.bs = bs
 
-        cf = fmp_get(
-            resource='cash-flow-statement',
-            symbol=self.ticker,
-            params={'period':'annual', 'limit':5},
-            to_pandas=True
-        )
+        cf_response = requests.get(
+            f'https://financialmodelingprep.com/stable/cash-flow-statement?symbol={self.ticker}&apikey={api_key}'
+            )
+
+        cf_data = cf_response.json()
+        cf = pd.DataFrame(cf_data)
         self.cf = cf
 
-        cf_cfo = cf['operating_cash_flow']
-        cf_capex = cf['capital_expenditure']
-        cf_net_debt = cf['debt_repayment']
+        cf_cfo = cf['operatingCashFlow']
+        cf_capex = cf['capitalExpenditure']
+        cf_net_debt = cf['netDebtIssuance']
         
         fcf = cf_cfo + cf_capex + cf_net_debt
         fcf_df = pd.DataFrame(fcf)
         fcf_df.columns = ['free_cash_flow']
         today_fcf = np.average(fcf_df['free_cash_flow'])
-        roe = cf['net_income'] / bs['total_equity']
+        roe = cf['netIncome'] / bs['totalEquity']
         roe = pd.DataFrame(roe)
         roe.columns = ['roe']
         avg_roe = np.average(roe['roe'])
 
-        reinv_rate = (cf['net_income'] + cf ['dividends_paid']) / cf['net_income']
+        reinv_rate = (cf['netIncome'] + cf ['netDividendsPaid']) / cf['netIncome']
         reinv_rate = pd.DataFrame(reinv_rate)
         reinv_rate.columns = ['reinv_rate']
         reinv_rate_avg = np.average(reinv_rate['reinv_rate'])
@@ -65,15 +65,12 @@ class StockValuation:
 
         dcf = (today_fcf * (1+real_growth)) + ((today_fcf * ((1+real_growth)**2))/(cost_e - real_growth))
 
-        today = date.today()
-
-        market_cap = fmp_get(
-            resource='market-capitalization',
-            symbol=self.ticker,
-            params= {'date': f'{today.year}-{today.month}-{today.day}'},
-            to_pandas=True
+        mk_cap_response = requests.get(
+            f'https://financialmodelingprep.com/stable/market-capitalization?symbol={self.ticker}&apikey={api_key}'
         )
-        ir = dcf / market_cap['market_cap']
+        mkcap = mk_cap_response.json()
+        market_cap = pd.DataFrame(mkcap)
+        ir = dcf / market_cap['marketCap']
         
         return float(ir.iloc[0])
     
